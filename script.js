@@ -1,11 +1,10 @@
-//your JS code here. If required.
-let player1 = "";
-let player2 = "";
+let p1 = "";
+let p2 = "";
+let turn = "x";
 let currentPlayer = "";
-let currentSymbol = "X";
 let gameOver = false;
 
-const winningCombos = [
+const wins = [
   ["1","2","3"],
   ["4","5","6"],
   ["7","8","9"],
@@ -16,51 +15,43 @@ const winningCombos = [
   ["3","5","7"]
 ];
 
-document.getElementById("submit").addEventListener("click", () => {
-  player1 = document.getElementById("player-1").value;
-  player2 = document.getElementById("player-2").value;
+document.getElementById("submit").addEventListener("click", function () {
+  p1 = document.getElementById("player1").value;
+  p2 = document.getElementById("player2").value;
 
-  if (!player1 || !player2) return;
-
-  document.getElementById("setup").style.display = "none";
-  document.querySelector(".board").style.display = "grid";
-
-  currentPlayer = player1;
-  document.querySelector(".message").innerText = `${currentPlayer}, you're up`;
+  currentPlayer = p1;
+  document.querySelector(".message").innerText =
+    `${currentPlayer}, you're up`;
 });
 
 document.querySelectorAll(".cell").forEach(cell => {
-  cell.addEventListener("click", () => {
+  cell.addEventListener("click", function () {
     if (cell.innerText || gameOver) return;
 
-    cell.innerText = currentSymbol;
+    cell.innerText = turn;
 
-    if (checkWinner()) {
+    if (checkWin()) {
       document.querySelector(".message").innerText =
-        `${currentPlayer}, congratulations you won!`;
+        `${currentPlayer} congratulations you won!`;
       gameOver = true;
       return;
     }
 
-    currentSymbol = currentSymbol === "X" ? "O" : "X";
-    currentPlayer = currentPlayer === player1 ? player2 : player1;
+    turn = turn === "x" ? "o" : "x";
+    currentPlayer = currentPlayer === p1 ? p2 : p1;
 
     document.querySelector(".message").innerText =
       `${currentPlayer}, you're up`;
   });
 });
 
-function checkWinner() {
-  return winningCombos.some(combo => {
-    const [a, b, c] = combo;
-    if (
+function checkWin() {
+  return wins.some(combo => {
+    const [a,b,c] = combo;
+    return (
       document.getElementById(a).innerText &&
-      document.getElementById(a).innerText ===
-      document.getElementById(b).innerText &&
-      document.getElementById(a).innerText ===
-      document.getElementById(c).innerText
-    ) {
-      combo.forEach(id =>
-        document.getElementById(id).classList.add("winner")
-      );
-      return true;
+      document.getElementById(a).innerText === document.getElementById(b).innerText &&
+      document.getElementById(a).innerText === document.getElementById(c).innerText
+    );
+  });
+}
