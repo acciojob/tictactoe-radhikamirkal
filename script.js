@@ -1,6 +1,6 @@
 const submitBtn = document.getElementById("submit");
+const playerForm = document.getElementById("player-form");
 const gameDiv = document.getElementById("game");
-const formDiv = document.getElementById("player-form");
 const messageDiv = document.querySelector(".message");
 const cells = document.querySelectorAll(".cell");
 
@@ -10,19 +10,19 @@ let currentPlayer = "";
 let currentSymbol = "x";
 let board = Array(9).fill("");
 
-const winningCombos = [
+const winPatterns = [
   [0,1,2], [3,4,5], [6,7,8],
   [0,3,6], [1,4,7], [2,5,8],
   [0,4,8], [2,4,6]
 ];
 
 submitBtn.addEventListener("click", () => {
-  player1 = document.getElementById("player-1").value;
-  player2 = document.getElementById("player-2").value;
+  player1 = document.getElementById("player1").value;
+  player2 = document.getElementById("player2").value;
 
   if (!player1 || !player2) return;
 
-  formDiv.style.display = "none";
+  playerForm.style.display = "none";
   gameDiv.style.display = "block";
 
   currentPlayer = player1;
@@ -31,14 +31,14 @@ submitBtn.addEventListener("click", () => {
 
 cells.forEach((cell, index) => {
   cell.addEventListener("click", () => {
-    if (board[index] !== "" || checkWinner()) return;
+    if (board[index] !== "") return;
 
     board[index] = currentSymbol;
     cell.innerText = currentSymbol;
 
-    if (checkWinner()) {
+    if (checkWin()) {
       messageDiv.innerText = `${currentPlayer} congratulations you won!`;
-      highlightWinner();
+      highlightWin();
       return;
     }
 
@@ -54,18 +54,16 @@ cells.forEach((cell, index) => {
   });
 });
 
-function checkWinner() {
-  return winningCombos.some(combo =>
-    combo.every(index => board[index] === currentSymbol)
+function checkWin() {
+  return winPatterns.some(pattern =>
+    pattern.every(i => board[i] === currentSymbol)
   );
 }
 
-function highlightWinner() {
-  winningCombos.forEach(combo => {
-    if (combo.every(index => board[index] === currentSymbol)) {
-      combo.forEach(index => {
-        cells[index].classList.add("win");
-      });
+function highlightWin() {
+  winPatterns.forEach(pattern => {
+    if (pattern.every(i => board[i] === currentSymbol)) {
+      pattern.forEach(i => cells[i].classList.add("win"));
     }
   });
 }

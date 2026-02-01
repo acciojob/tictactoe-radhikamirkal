@@ -7,24 +7,29 @@
 </head>
 <body>
   <div class="container">
-    <!-- Player Form -->
+
+    <!-- Player Input Screen -->
     <div id="player-form">
       <h1>Tic Tac Toe</h1>
-      <div>
-        <label>Player 1</label>
-        <input id="player-1" placeholder="enter name" />
-      </div>
-      <div>
-        <label>Player 2</label>
-        <input id="player-2" placeholder="enter name" />
-      </div>
+
+      <label>Player 1</label>
+      <input id="player1" placeholder="enter name" />
+
+      <br /><br />
+
+      <label>Player 2</label>
+      <input id="player2" placeholder="enter name" />
+
+      <br /><br />
+
       <button id="submit">Start Game</button>
     </div>
 
-    <!-- Game Board -->
+    <!-- Game Screen -->
     <div id="game" style="display:none;">
       <h1>Tic Tac Toe</h1>
       <div class="message"></div>
+
       <div class="board">
         <div class="cell" id="1"></div>
         <div class="cell" id="2"></div>
@@ -37,6 +42,7 @@
         <div class="cell" id="9"></div>
       </div>
     </div>
+
   </div>
 
   <script src="script.js"></script>
