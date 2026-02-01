@@ -10,11 +10,13 @@ body {
 .board {
   display: grid;
   grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(3, 100px);
+  gap: 0;
   margin: 20px auto;
 }
 
 .cell {
+  width: 100px;          /* 🔥 REQUIRED */
+  height: 100px;         /* 🔥 REQUIRED */
   border: 1px solid black;
   background-color: pink;
   font-size: 40px;
