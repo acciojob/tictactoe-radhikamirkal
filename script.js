@@ -1,57 +1,71 @@
-let p1 = "";
-let p2 = "";
-let turn = "x";
-let currentPlayer = "";
-let gameOver = false;
+const submitBtn = document.getElementById("submit");
+const gameDiv = document.getElementById("game");
+const formDiv = document.getElementById("player-form");
+const messageDiv = document.querySelector(".message");
+const cells = document.querySelectorAll(".cell");
 
-const wins = [
-  ["1","2","3"],
-  ["4","5","6"],
-  ["7","8","9"],
-  ["1","4","7"],
-  ["2","5","8"],
-  ["3","6","9"],
-  ["1","5","9"],
-  ["3","5","7"]
+let player1 = "";
+let player2 = "";
+let currentPlayer = "";
+let currentSymbol = "x";
+let board = Array(9).fill("");
+
+const winningCombos = [
+  [0,1,2], [3,4,5], [6,7,8],
+  [0,3,6], [1,4,7], [2,5,8],
+  [0,4,8], [2,4,6]
 ];
 
-document.getElementById("submit").addEventListener("click", function () {
-  p1 = document.getElementById("player1").value;
-  p2 = document.getElementById("player2").value;
+submitBtn.addEventListener("click", () => {
+  player1 = document.getElementById("player-1").value;
+  player2 = document.getElementById("player-2").value;
 
-  currentPlayer = p1;
-  document.querySelector(".message").innerText =
-    `${currentPlayer}, you're up`;
+  if (!player1 || !player2) return;
+
+  formDiv.style.display = "none";
+  gameDiv.style.display = "block";
+
+  currentPlayer = player1;
+  messageDiv.innerText = `${currentPlayer}, you're up`;
 });
 
-document.querySelectorAll(".cell").forEach(cell => {
-  cell.addEventListener("click", function () {
-    if (cell.innerText || gameOver) return;
+cells.forEach((cell, index) => {
+  cell.addEventListener("click", () => {
+    if (board[index] !== "" || checkWinner()) return;
 
-    cell.innerText = turn;
+    board[index] = currentSymbol;
+    cell.innerText = currentSymbol;
 
-    if (checkWin()) {
-      document.querySelector(".message").innerText =
-        `${currentPlayer} congratulations you won!`;
-      gameOver = true;
+    if (checkWinner()) {
+      messageDiv.innerText = `${currentPlayer} congratulations you won!`;
+      highlightWinner();
       return;
     }
 
-    turn = turn === "x" ? "o" : "x";
-    currentPlayer = currentPlayer === p1 ? p2 : p1;
+    if (currentSymbol === "x") {
+      currentSymbol = "o";
+      currentPlayer = player2;
+    } else {
+      currentSymbol = "x";
+      currentPlayer = player1;
+    }
 
-    document.querySelector(".message").innerText =
-      `${currentPlayer}, you're up`;
+    messageDiv.innerText = `${currentPlayer}, you're up`;
   });
 });
 
-function checkWin() {
-  return wins.some(combo => {
-    const [a,b,c] = combo;
-    return (
-      document.getElementById(a).innerText &&
-      document.getElementById(a).innerText === document.getElementById(b).innerText &&
-      document.getElementById(a).innerText === document.getElementById(c).innerText
-    );
+function checkWinner() {
+  return winningCombos.some(combo =>
+    combo.every(index => board[index] === currentSymbol)
+  );
+}
+
+function highlightWinner() {
+  winningCombos.forEach(combo => {
+    if (combo.every(index => board[index] === currentSymbol)) {
+      combo.forEach(index => {
+        cells[index].classList.add("win");
+      });
+    }
   });
 }
