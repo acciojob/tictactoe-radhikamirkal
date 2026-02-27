@@ -31,12 +31,14 @@ button{
 .board{
     display:grid;
     grid-template-columns:repeat(3,120px);
+    grid-template-rows:repeat(3,120px);   /* ⭐ CRITICAL FIX */
     justify-content:center;
 }
 
 .cell{
     width:120px;
     height:120px;
+	min-height:120px;
     background:#e6a7af;
     border:2px solid black;
     display:flex;
