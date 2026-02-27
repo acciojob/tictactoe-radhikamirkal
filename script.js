@@ -1,6 +1,4 @@
 const submit = document.getElementById("submit");
-const setup = document.getElementById("setup");
-const game = document.getElementById("game");
 const message = document.querySelector(".message");
 const cells = document.querySelectorAll(".cell");
 
@@ -8,6 +6,7 @@ let player1 = "";
 let player2 = "";
 let current = "x";
 let gameActive = true;
+let started = false;   // ⭐ AccioJobs important
 
 const wins = [
     ["1","2","3"],["4","5","6"],["7","8","9"],
@@ -15,18 +14,21 @@ const wins = [
     ["1","5","9"],["3","5","7"]
 ];
 
-submit.onclick = () => {
+submit.addEventListener("click", () => {
     player1 = document.getElementById("player1").value || "Player1";
     player2 = document.getElementById("player2").value || "Player2";
 
-    setup.style.display = "none";
-    game.style.display = "block"; 
-
+    started = true;
     message.textContent = `${player1}, you're up`;
-};
+});
 
-cells.forEach(cell=>{
-    cell.addEventListener("click",()=>{
+cells.forEach(cell => {
+    cell.addEventListener("click", () => {
+
+        // ⭐ Game must be started
+        if(!started) return;
+
+        // ⭐ Prevent overwrite or clicking after win
         if(cell.textContent || !gameActive) return;
 
         cell.textContent = current;
@@ -37,11 +39,6 @@ cells.forEach(cell=>{
             const winner = current === "x" ? player1 : player2;
             message.textContent = `${winner} congratulations you won!`;
             gameActive = false;
-
-            winPattern.forEach(id=>{
-                document.getElementById(id).classList.add("winner");
-            });
-
             return;
         }
 
