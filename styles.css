@@ -36,15 +36,22 @@ button{
 .board{
     display:grid;
     grid-template-columns:repeat(3,120px);
+    justify-content:center;
 }
 
 .cell{
     width:120px;
-    height:120px;   /* MUST be fixed */
+    height:120px;
     background:#e6a7af;
     border:2px solid black;
     display:flex;
     justify-content:center;
     align-items:center;
     font-size:40px;
+    cursor:pointer;
+}
+
+.winner{
+    background:purple;
+    color:white;
 }

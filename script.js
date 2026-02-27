@@ -16,11 +16,11 @@ const wins = [
 ];
 
 submit.onclick = () => {
-    player1 = document.getElementById("player1").value;
-    player2 = document.getElementById("player2").value;
+    player1 = document.getElementById("player1").value || "Player1";
+    player2 = document.getElementById("player2").value || "Player2";
 
-    setup.style.display = "none";
-    game.style.display = "block";
+    setup.classList.add("hidden");
+    game.classList.remove("hidden");
 
     message.textContent = `${player1}, you're up`;
 };
@@ -34,11 +34,10 @@ cells.forEach(cell=>{
         const winPattern = checkWin();
 
         if(winPattern){
-            const winner = current==="X" ? player1 : player2;
-			message.textContent = `${winner} congratulations you won!`;
-			gameActive = false;
+            const winner = current === "x" ? player1 : player2;
+            message.textContent = `${winner} congratulations you won!`;
+            gameActive = false;
 
-            // highlight winning cells
             winPattern.forEach(id=>{
                 document.getElementById(id).classList.add("winner");
             });
@@ -46,9 +45,9 @@ cells.forEach(cell=>{
             return;
         }
 
-        current = current==="x" ? "o" : "x";
+        current = current === "x" ? "o" : "x";
 
-        message.textContent = current==="x"
+        message.textContent = current === "x"
             ? `${player1}, you're up`
             : `${player2}, you're up`;
     });
