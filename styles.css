@@ -22,9 +22,6 @@ button{
     cursor:pointer;
 }
 
-.hidden{
-    display:none;
-}
 
 .message{
     margin:15px;
