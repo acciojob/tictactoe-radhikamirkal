@@ -19,8 +19,8 @@ submit.onclick = () => {
     player1 = document.getElementById("player1").value;
     player2 = document.getElementById("player2").value;
 
-    setup.classList.add("hidden");
-    game.classList.remove("hidden");
+    setup.style.display = "none";
+    game.style.display = "block";
 
     message.textContent = `${player1}, you're up`;
 };
