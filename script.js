@@ -37,7 +37,7 @@ cells.forEach(cell => {
 
         if(winPattern){
             const winner = current === "x" ? player1 : player2;
-            message.textContent = `${winner} congratulations you won!`;
+            message.textContent = `${winner}, congratulations you won!`;
             gameActive = false;
             return;
         }
