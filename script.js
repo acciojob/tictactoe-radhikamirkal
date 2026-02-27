@@ -6,7 +6,7 @@ const cells = document.querySelectorAll(".cell");
 
 let player1 = "";
 let player2 = "";
-let current = "X";
+let current = "x";
 let gameActive = true;
 
 const wins = [
@@ -16,8 +16,8 @@ const wins = [
 ];
 
 submit.onclick = () => {
-    player1 = document.getElementById("player-1").value;
-    player2 = document.getElementById("player-2").value;
+    player1 = document.getElementById("player1").value;
+    player2 = document.getElementById("player2").value;
 
     setup.classList.add("hidden");
     game.classList.remove("hidden");
@@ -35,8 +35,8 @@ cells.forEach(cell=>{
 
         if(winPattern){
             const winner = current==="X" ? player1 : player2;
-            message.textContent = `${winner}, congratulations you won!`;
-            gameActive = false;
+			message.textContent = `${winner} congratulations you won!`;
+			gameActive = false;
 
             // highlight winning cells
             winPattern.forEach(id=>{
@@ -46,9 +46,9 @@ cells.forEach(cell=>{
             return;
         }
 
-        current = current==="X" ? "O" : "X";
+        current = current==="x" ? "o" : "x";
 
-        message.textContent = current==="X"
+        message.textContent = current==="x"
             ? `${player1}, you're up`
             : `${player2}, you're up`;
     });
