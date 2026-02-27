@@ -1,36 +1,53 @@
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
 
-.container {
-  margin-top: 40px;
+.container{
+    text-align:center;
 }
 
-.board {
-  display: grid;
-  grid-template-columns: repeat(3, 100px);
-  gap: 0;
-  margin: 20px auto;
+input{
+    display:block;
+    margin:10px auto;
+    padding:10px;
+    width:220px;
 }
 
-.cell {
-  width: 100px;          /* 🔥 REQUIRED */
-  height: 100px;         /* 🔥 REQUIRED */
-  border: 1px solid black;
-  background-color: pink;
-  font-size: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+button{
+    padding:10px 20px;
+    margin-top:10px;
+    cursor:pointer;
 }
 
-.message {
-  font-size: 20px;
-  margin-top: 10px;
+.hidden{
+    display:none;
 }
 
-.win {
-  background-color: purple !important;
+.message{
+    margin:15px;
+    font-weight:bold;
+}
+
+.board{
+    display:grid;
+    grid-template-columns:repeat(3,80px);
+    gap:5px;
+    justify-content:center;
+}
+
+.cell{
+    width:80px;
+    height:80px;
+    background:white;
+    border:2px solid black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    cursor:pointer;
 }

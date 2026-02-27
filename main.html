@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>Tic Tac Toe</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="container">
 
-    <!-- Player Input Screen -->
-    <div id="player-form">
-      <h1>Tic Tac Toe</h1>
+<div class="container">
 
-      <label>Player 1</label>
-      <input id="player1" placeholder="enter name" />
+    <!-- Name Screen -->
+    <div id="setup">
+        <h1>Tic Tac Toe</h1>
 
-      <br /><br />
+        <label>Player 1</label>
+        <input id="player-1" placeholder="enter name">
 
-      <label>Player 2</label>
-      <input id="player2" placeholder="enter name" />
+        <label>Player 2</label>
+        <input id="player-2" placeholder="enter name">
 
-      <br /><br />
-
-      <button id="submit">Start Game</button>
+        <button id="submit">Start Game</button>
     </div>
 
     <!-- Game Screen -->
-    <div id="game" style="display:none;">
-      <h1>Tic Tac Toe</h1>
-      <div class="message"></div>
+    <div id="game" class="hidden">
+        <h1>Tic Tac Toe</h1>
+        <div class="message"></div>
 
-      <div class="board">
-        <div class="cell" id="1"></div>
-        <div class="cell" id="2"></div>
-        <div class="cell" id="3"></div>
-        <div class="cell" id="4"></div>
-        <div class="cell" id="5"></div>
-        <div class="cell" id="6"></div>
-        <div class="cell" id="7"></div>
-        <div class="cell" id="8"></div>
-        <div class="cell" id="9"></div>
-      </div>
+        <div class="board">
+            <div class="cell" id="1"></div>
+            <div class="cell" id="2"></div>
+            <div class="cell" id="3"></div>
+            <div class="cell" id="4"></div>
+            <div class="cell" id="5"></div>
+            <div class="cell" id="6"></div>
+            <div class="cell" id="7"></div>
+            <div class="cell" id="8"></div>
+            <div class="cell" id="9"></div>
+        </div>
     </div>
 
-  </div>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
