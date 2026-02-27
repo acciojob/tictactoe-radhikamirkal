@@ -16,10 +16,12 @@ const wins = [
 
 submit.addEventListener("click", () => {
     player1 = document.getElementById("player1").value || "Player1";
-
     player2 = document.getElementById("player2").value || "Player2";
 
     started = true;
+
+    document.getElementById("setup").style.display = "none";   // ⭐ FIX
+
     message.textContent = `${player1}, you're up`;
 });
 
