@@ -33,18 +33,18 @@ button{
     grid-template-columns:repeat(3,120px);
     grid-template-rows:repeat(3,120px);   /* ⭐ CRITICAL FIX */
     justify-content:center;
+	width:360px;
+    height:360px;
 }
 
 .cell{
     width:120px;
     height:120px;
-	min-height:120px;
     background:#e6a7af;
     border:2px solid black;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     font-size:40px;
+    text-align:center;
+    line-height:120px;   /* ⭐ vertical center without flex */
     cursor:pointer;
 }
 
