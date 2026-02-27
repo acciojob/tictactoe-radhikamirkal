@@ -6,6 +6,7 @@ body{
 
 .container{
     text-align:center;
+	width:100%;
     margin-top:50px;
 }
 
@@ -44,8 +45,8 @@ button{
     border:2px solid black;
     font-size:40px;
     text-align:center;
-    line-height:120px;   /* ⭐ vertical center without flex */
-    cursor:pointer;
+    line-height:120px;
+    text-transform:uppercase;   /* ⭐ visual uppercase only */
 }
 
 .winner{

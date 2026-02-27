@@ -16,6 +16,7 @@ const wins = [
 
 submit.addEventListener("click", () => {
     player1 = document.getElementById("player1").value || "Player1";
+
     player2 = document.getElementById("player2").value || "Player2";
 
     started = true;
