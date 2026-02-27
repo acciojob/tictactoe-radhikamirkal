@@ -6,7 +6,7 @@ let player1 = "";
 let player2 = "";
 let current = "x";
 let gameActive = true;
-let started = false;   // ⭐ AccioJobs important
+let started = false;
 
 const wins = [
     ["1","2","3"],["4","5","6"],["7","8","9"],
@@ -25,10 +25,7 @@ submit.addEventListener("click", () => {
 cells.forEach(cell => {
     cell.addEventListener("click", () => {
 
-        // ⭐ Game must be started
         if(!started) return;
-
-        // ⭐ Prevent overwrite or clicking after win
         if(cell.textContent || !gameActive) return;
 
         cell.textContent = current;
